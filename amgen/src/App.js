@@ -2,9 +2,12 @@ import { useEffect, useState } from 'react';
 import './App.css';
 //import my components
 import FlashCard from './components/FlashCard/FlashCard';
+import RevealButton from './components/RevealButton/RevealButton';
 //import axios
 import axios from 'axios';
 function App() {
+  //going to create a state to reveal the autho
+  const [revealOn, setRevealOn] = useState(false); //by default the reveal will be off
   //going to create a state for the object that will hold quote and author
   const [quoteObject, setQuoteObject] = useState({
     quoteText: '',
@@ -32,7 +35,8 @@ function App() {
   return (
     <div className="App">
         Amgen Associate Software Engineer Interview Homework
-        <FlashCard quoteObject={quoteObject}/>
+        <FlashCard quoteObject={quoteObject} revealOn={revealOn}/>
+        <RevealButton setRevealOn={setRevealOn}/>
     </div>
   );
 }
