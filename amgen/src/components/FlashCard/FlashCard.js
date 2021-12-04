@@ -4,8 +4,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 //this component will hold the quote to be displayed to the user
-
-const FlashCard = () => {
+//deconstruct the prop
+const FlashCard = ({quoteObject}) => {
     return (
         <Card sx={{minWidth: 275}}>
             <CardContent>
@@ -13,7 +13,7 @@ const FlashCard = () => {
                     Quote
                 </Typography>
                 <Typography variant="h1">
-                    "Quote goes here."
+                    {quoteObject.quoteText}
                 </Typography>
             </CardContent>
         </Card>
