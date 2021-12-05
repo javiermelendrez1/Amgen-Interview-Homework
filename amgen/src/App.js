@@ -6,19 +6,23 @@ import RevealButton from './components/RevealButton/RevealButton';
 import NextButton from './components/NextButton/NextButton';
 //import axios
 import axios from 'axios';
-//import my helper function
+///import material ui component
+import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+
 function App() {
-  //going to create a state to reveal the autho
+  //going to create a state to reveal the author
   const [revealOn, setRevealOn] = useState(false); //by default the reveal will be off
   //going to create a state for the object that will hold quote and author
   const [quoteObject, setQuoteObject] = useState({
     quoteText: '',
     quoteAuthor: '',
   }); //will be initally a empty object
+  //async function to make fetch request to express
   const fetchExpress = async () => {
     try {
       const response = await axios.get('http://localhost:3001/');
-      console.log(response.data);
       setQuoteObject({
         quoteText: response.data.quoteText,
         quoteAuthor: response.data.quoteAuthor,
@@ -34,12 +38,16 @@ function App() {
 
   },[]); //no dependencies
   return (
-    <div className="App">
-        Amgen Associate Software Engineer Interview Homework
+    <Container maxWidth="sm">
+        <Typography sx={{ fontSize: 20}} >
+          Associate Software Engineer -- Interview Homework
+        </Typography>        
         <FlashCard quoteObject={quoteObject} revealOn={revealOn}/>
-        <RevealButton setRevealOn={setRevealOn}/>
-        <NextButton setRevealOn={setRevealOn} setQuoteObject={setQuoteObject}/>
-    </div>
+        <Stack direction="row" spacing={2} justifyContent="center">
+          <RevealButton setRevealOn={setRevealOn}/>
+          <NextButton setRevealOn={setRevealOn} setQuoteObject={setQuoteObject}/>
+        </Stack>
+    </Container>
   );
 }
 

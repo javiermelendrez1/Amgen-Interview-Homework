@@ -12,11 +12,11 @@ app.get('/', async (req, res, next) => {
         const r = await axios.get('https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en');
         //send the request back to the client
         res.send(r.data);
-    } catch( err ){
+    } catch (err) {
         next(err);
     }
 })
 
 app.listen(3001, function () {
-  console.log('CORS-enabled web server listening on port 30001')
+    console.log('CORS-enabled web server listening on port 30001')
 })
